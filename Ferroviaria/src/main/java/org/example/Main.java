@@ -30,6 +30,7 @@ public class Main {
             FileReader fileReader = new FileReader(criaVagaoFile);
             CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(0).build();
             List<String[]> data = csvReader.readAll();
+            
 
             for (String[] row : data) {
                 int id = Integer.parseInt(row[0]);
@@ -64,7 +65,7 @@ public class Main {
             for (String[] row : data) {
                 String[] listaRow = row[0].split(",");
                 if (listaRow[0] != null) {
-                    garagem.cadastrarTrem(Integer.parseInt(listaRow[0]));
+                    Garagem.cadastrarTrem(Integer.parseInt(listaRow[0]));
                     for (int i = 1; i < listaRow.length; i++) {
                         if (Integer.parseInt(listaRow[i]) < 100) {
                             garagem.cadastrarVagao(Integer.parseInt(listaRow[i]), 6.0);
@@ -160,7 +161,7 @@ public class Main {
             System.out.println("Insira um identificador para o trem:");
             int idTrem = keyboard.nextInt();
 
-            garagem.cadastrarTrem(idTrem);
+            Garagem.cadastrarTrem(idTrem);
             System.out.println(garagem);
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
