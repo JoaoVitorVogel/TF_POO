@@ -3,6 +3,9 @@ package org.example;
 import java.security.InvalidParameterException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import javax.swing.SwingUtilities;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;
@@ -19,10 +22,11 @@ public class Main {
     public static void criaEmpresa() { // Método para criar as locomotivas e vagões
         String criaVagaoFile = "Ferroviaria\\arquivos\\inicialVagao.csv";
         String criaLocomotivaFile = "Ferroviaria\\arquivos\\inicialLocomotiva.csv";
+        String criaComposicaoFile = "Ferroviaria\\arquivos\\inicialComposicao.csv";
 
         try {
             FileReader fileReader = new FileReader(criaVagaoFile);
-            CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(1).build();
+            CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(0).build();
             List<String[]> data = csvReader.readAll();
 
             for (String[] row : data) {
@@ -37,7 +41,7 @@ public class Main {
 
         try {
             FileReader fileReader = new FileReader(criaLocomotivaFile);
-            CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(1).build();
+            CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(0).build();
             List<String[]> data = csvReader.readAll();
 
             for (String[] row : data) {
@@ -49,57 +53,91 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            FileReader fileReader = new FileReader(criaComposicaoFile);
+            CSVReader csvReader = new CSVReaderBuilder(fileReader).withSkipLines(0).build();
+            List<String[]> data = csvReader.readAll();
+
+            for (String[] row : data) {
+                String[] listaRow = row[0].split(",");
+                if (listaRow[0] != null) {
+                    garagem.cadastrarTrem(Integer.parseInt(listaRow[0]));
+                    for (int i = 1; i < listaRow.length; i++) {
+                        if (Integer.parseInt(listaRow[i]) < 100) {
+                            garagem.cadastrarVagao(Integer.parseInt(listaRow[i]), 6.0);
+                            garagem.alocarVagao(garagem.getVagao(Integer.parseInt(listaRow[i])),
+                                    garagem.getTrem(Integer.parseInt(listaRow[0])));
+                        } else {
+                            garagem.cadastrarLocomotiva(Integer.parseInt(listaRow[i]), 30.0);
+                            garagem.alocarLocomotiva(garagem.getLocomotiva(Integer.parseInt(listaRow[i])),
+                                    garagem.getTrem(Integer.parseInt(listaRow[0])));
+                        }
+                    }
+                }
+
+            }
+            csvReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] ARGS) {
         criaEmpresa();
-        while (menu())
-            ;
+        SwingUtilities.invokeLater(() -> new Main());
     }
 
-    public static boolean menu() { // Menu interativo
-        System.out.println("-------------------------------------------------------");
-        System.out.println("          Centro de controle da ferroviária            ");
-        System.out.println("-------------------------------------------------------");
-        System.out.println("|                 Menu de opções                      |");
-        System.out.println("|           Digite a opção desejada                   |");
-        System.out.println("|            1.  Criar um trem                        |");
-        System.out.println("|            2.  Editar um trem                       |");
-        System.out.println("|            3.  Mostrar as garagens                  |");
-        System.out.println("|            4.  Pesquisar vagões e locomotivas       |");
-        System.out.println("|            5.  Desfazer um trem                     |");
-        System.out.println("|            9.  Encerrar o programa                  |");
-        System.out.println("|-----------------------------------------------------|");
-        String opcao = keyboard.next();
-        switch (opcao) {
-            case "1": // Criação de um trem
-                criaTrem();
-                menuEditar();
-                atualizaArquivos();
-                break;
-            case "2":
-                menuEditar();
-                break;
-            case "3":
-                System.out.println(garagem);
-                break;
-            case "4":
-                mostrarGaragem();
-                break;
-            case "5":
-                desfazerTrem();
-                break;
-            case "9":
-                System.out.println("------------------------------------------------------");
-                System.out.println("               **Fim do programa**                    ");
-                System.out.println("------------------------------------------------------");
-                return false;
-            default:
-                opcaoInvalida();
-                break;
-        }
-        return true;
+    public Main() {
+        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+        janelaPrincipal.setSize(400, 300);
+        janelaPrincipal.setLocationRelativeTo(null);
+        janelaPrincipal.setVisible(true);
     }
+
+    // public static boolean menu() { // Menu interativo
+    //     System.out.println("-------------------------------------------------------");
+    //     System.out.println("          Centro de controle da ferroviária            ");
+    //     System.out.println("-------------------------------------------------------");
+    //     System.out.println("|                 Menu de opções                      |");
+    //     System.out.println("|           Digite a opção desejada                   |");
+    //     System.out.println("|            1.  Criar um trem                        |");
+    //     System.out.println("|            2.  Editar um trem                       |");
+    //     System.out.println("|            3.  Mostrar as garagens                  |");
+    //     System.out.println("|            4.  Pesquisar vagões e locomotivas       |");
+    //     System.out.println("|            5.  Desfazer um trem                     |");
+    //     System.out.println("|            9.  Encerrar o programa                  |");
+    //     System.out.println("|-----------------------------------------------------|");
+    //     String opcao = keyboard.next();
+    //     switch (opcao) {
+    //         case "1": // Criação de um trem
+    //             criaTrem();
+    //             menuEditar();
+    //             break;
+    //         case "2":
+    //             menuEditar();
+    //             break;
+    //         case "3":
+    //             System.out.println(garagem);
+    //             break;
+    //         case "4":
+    //             mostrarGaragem();
+    //             break;
+    //         case "5":
+    //             desfazerTrem();
+    //             break;
+    //         case "9":
+    //             atualizaArquivos();
+    //             System.out.println("------------------------------------------------------");
+    //             System.out.println("               **Fim do programa**                    ");
+    //             System.out.println("------------------------------------------------------");
+    //             return false;
+    //         default:
+    //             opcaoInvalida();
+    //             break;
+    //     }
+    //     return true;
+    // }
 
     public static void opcaoInvalida() {
         System.out.println("------------------------------------------------------");
@@ -314,78 +352,78 @@ public class Main {
     }
 
     public static void atualizaArquivos() {
-        try{
+        try {
             String criaLocomotiva = "Ferroviaria\\arquivos\\inicialLocomotiva.csv";
 
             FileWriter fileWriter = new FileWriter(criaLocomotiva, true);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
-            
+
             List<Locomotiva> garagemLocomotivas = garagem.getGaragemLocomotivas();
 
             try (FileWriter writer = new FileWriter(criaLocomotiva, false)) {
-                writer.write(""); 
+                writer.write("");
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
             for (Locomotiva locomotiva : garagemLocomotivas) {
-                String[] linha = {String.valueOf(locomotiva.getId())};
+                String[] linha = { String.valueOf(locomotiva.getId()) };
                 csvWriter.writeNext(linha);
 
-            } 
+            }
 
             csvWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             String criaVagao = "Ferroviaria\\arquivos\\inicialVagao.csv";
 
             FileWriter fileWriter = new FileWriter(criaVagao, true);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
-            
+
             List<Vagao> garagemVagaos = garagem.getGaragemVagoes();
 
             try (FileWriter writer = new FileWriter(criaVagao, false)) {
-                writer.write(""); 
+                writer.write("");
             } catch (IOException e) {
                 e.printStackTrace();
-            } 
+            }
 
             for (Vagao vagao : garagemVagaos) {
-                String[] linha = {String.valueOf(vagao.getId())};
+                String[] linha = { String.valueOf(vagao.getId()) };
                 csvWriter.writeNext(linha);
-            } 
+            }
 
             csvWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             String criaComposicao = "Ferroviaria\\arquivos\\inicialComposicao.csv";
 
             FileWriter fileWriter = new FileWriter(criaComposicao, true);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
-            
+
             List<Trem> garagemCarros = garagem.getGaragemTrens();
 
             try (FileWriter writer = new FileWriter(criaComposicao, false)) {
-                writer.write(""); 
+                writer.write("");
             } catch (IOException e) {
                 e.printStackTrace();
-            } 
+            }
 
             for (Trem trem : garagemCarros) {
                 String aux = "";
                 List<Integer> listaIds = trem.getTremIds();
-                for(Integer id : listaIds){
-                    aux = aux.concat(String.valueOf(id) + ", ");
+                for (Integer id : listaIds) {
+                    aux = aux.concat(String.valueOf(id) + ",");
                 }
-                
-                String[] linha = {String.valueOf(aux)};
+
+                String[] linha = { String.valueOf(aux) };
                 csvWriter.writeNext(linha);
-            } 
+            }
 
             csvWriter.close();
         } catch (IOException e) {

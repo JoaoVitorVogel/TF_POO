@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garagem {
-    private List<Locomotiva> garagemLocomotivas = new ArrayList<>();
-    private List<Vagao> garagemVagoes = new ArrayList<>();
-    private List<Trem> garagemTrens = new ArrayList<>();
+    private static List<Locomotiva> garagemLocomotivas = new ArrayList<>();
+    private static List<Vagao> garagemVagoes = new ArrayList<>();
+    private static List<Trem> garagemTrens = new ArrayList<>();
 
     /*
      * Os seguidos 3 metodos sao responsaveis por adicionar os objetos informados
@@ -261,6 +261,26 @@ public class Garagem {
                 tremList = tremList.concat(t.toString() + "\n");
             }
             return text + tremList;
+        }
+    }
+
+    public static String toStringLocomotivas() {
+        return "" + garagemLocomotivas;
+    }
+
+    public static String toStringVagoes() {
+        return "" + garagemVagoes;
+    }
+
+    public static String toStringTrens() {
+        if (garagemTrens.isEmpty()) {
+            return "<vazia>";
+        } else {
+            String tremList = "\n";
+            for (Trem t : garagemTrens) {
+                tremList = tremList.concat(t.toString() + "\n");
+            }
+            return tremList;
         }
     }
 
