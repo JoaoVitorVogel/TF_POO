@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class JanelaPrincipal extends JFrame implements ActionListener{
+public class JanelaPrincipal extends JFrame{
     
     public JanelaPrincipal() {
         super("Sistema de trens");
@@ -21,26 +21,18 @@ public class JanelaPrincipal extends JFrame implements ActionListener{
 
         // Opção criar trem
         JButton botaoCriarTrem = new JButton("Criar trem");
-        botaoCriarTrem.addActionListener(this);
-        add(botaoCriarTrem);
+        botaoCriarTrem.addActionListener(evento -> {
+            JanelaCriaTrem janelaCriaTrem = new JanelaCriaTrem();
+            janelaCriaTrem.setSize(400, 300);
+            janelaCriaTrem.setLocationRelativeTo(null);
+            janelaCriaTrem.setVisible(true);
+        });
 
+        // Monta painel
         JPanel painel = new JPanel(new GridLayout(5,2));
         painel.add(botaoVerGaragens);
         painel.add(botaoCriarTrem);
 
         add(painel);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
-
-        if (command.equals("Criar trem")){
-            criarTrem();
-        }
-    }
-
-    public void criarTrem() {
-        JOptionPane.showMessageDialog(this, "Hello");
     }
 }
