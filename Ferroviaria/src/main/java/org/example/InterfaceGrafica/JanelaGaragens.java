@@ -23,6 +23,8 @@ public class JanelaGaragens extends JFrame{
         JLabel textoTrens = new JLabel("Lista de trens na garagem");
         JLabel listaTrens = new JLabel(Garagem.toStringTrens());
         
+        //Mostra trens criados
+        
 
         JPanel painel = new JPanel(new GridLayout(6,2));
         painel.add(textoLocomotivas);

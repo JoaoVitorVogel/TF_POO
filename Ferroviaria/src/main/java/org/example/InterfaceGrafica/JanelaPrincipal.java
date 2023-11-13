@@ -38,12 +38,21 @@ public class JanelaPrincipal extends JFrame{
         });
         add(botaoEditarTrem);
 
+        // Desfazer o trem
+        JButton botaoDesfazOTrem = new JButton("Desfazer o trem");
+        botaoDesfazOTrem.addActionListener(evento -> {
+            JanelaDesfazTrem janelaDesfazTrem = new JanelaDesfazTrem();
+            janelaDesfazTrem.setSize(400, 300);
+            janelaDesfazTrem.setLocationRelativeTo(null);
+            janelaDesfazTrem.setVisible(true);
+        });
 
         // Monta painel
         JPanel painel = new JPanel(new GridLayout(5,2));
         painel.add(botaoVerGaragens);
         painel.add(botaoCriarTrem);
         painel.add(botaoEditarTrem);
+        painel.add(botaoDesfazOTrem);
         add(painel);
     
     }
