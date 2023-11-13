@@ -57,11 +57,12 @@ public class JanelaPrincipal extends JFrame{
         );
 
         // Monta painel
-        JPanel painel = new JPanel(new GridLayout(4,2));
+        JPanel painel = new JPanel(new GridLayout(5,2));
         painel.add(botaoVerGaragens);
         painel.add(botaoCriarTrem);
         painel.add(botaoEditarTrem);
         painel.add(botaoDesfazOTrem);
+        painel.add(botaoSalvar);
         add(painel);
     
     }

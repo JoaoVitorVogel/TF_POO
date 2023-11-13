@@ -19,13 +19,16 @@ public class JanelaCriaTrem extends JFrame{
         JLabel textoVagoes = new JLabel("Lista de vagões na garagem");
         JLabel listaVagoes = new JLabel(Garagem.toStringVagoes());
 
-
+        JLabel mensagem = new JLabel();
         JTextField campoIdTrem = new JTextField(30);
         JButton botaoConfirma = new JButton("Criar trem");
         botaoConfirma.addActionListener(evento -> {
             String textoId = campoIdTrem.getText();
             int idTrem = Integer.parseInt(textoId);
             Garagem.cadastrarTrem(idTrem);
+            mensagem.setForeground(Color.RED);
+            mensagem.setText("Trem criado: " + textoId);
+            campoIdTrem.setText("");
         });
 
         JPanel painel = new JPanel(new GridLayout(6,2));
@@ -35,6 +38,7 @@ public class JanelaCriaTrem extends JFrame{
         painel.add(listaVagoes);
         painel.add(campoIdTrem);
         painel.add(botaoConfirma);
+        painel.add(mensagem);
 
         add(painel);
     }
