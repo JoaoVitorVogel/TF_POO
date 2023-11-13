@@ -1,6 +1,5 @@
 package org.example.InterfaceGrafica;
 import javax.swing.*;
-import org.example.Garagem;
 import java.awt.*;
 public class JanelaDesfazTrem extends JFrame{
     public JanelaDesfazTrem(){
