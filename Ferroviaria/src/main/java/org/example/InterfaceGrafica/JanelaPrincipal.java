@@ -24,11 +24,45 @@ public class JanelaPrincipal extends JFrame implements ActionListener{
         botaoCriarTrem.addActionListener(this);
         add(botaoCriarTrem);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+         // Opção editar um trem
+        JButton botaoEditarTrem = new JButton("Editar o trem");
+        botaoEditarTrem.addActionListener(evento -> {
+            JanelaEditTrem janelaEditTrem = new JanelaEditTrem();
+            janelaEditTrem.setSize(400, 300);
+            janelaEditTrem.setLocationRelativeTo(null);
+            janelaEditTrem.setVisible(true);
+        });
+        add(botaoEditarTrem);
+
+
         JPanel painel = new JPanel(new GridLayout(5,2));
         painel.add(botaoVerGaragens);
         painel.add(botaoCriarTrem);
-
+        painel.add(botaoEditarTrem);
         add(painel);
+    
     }
 
     @Override
