@@ -20,23 +20,21 @@ public class JanelaCriaTrem extends JFrame{
         JLabel listaVagoes = new JLabel(Garagem.toStringVagoes());
 
 
-        JLabel textoCriar = new JLabel("Digite um ID para o nove trem");
-        
-        
-        Garagem.cadastrarTrem(1);
-
-
-
-
-
-
-
+        JTextField campoIdTrem = new JTextField(30);
+        JButton botaoConfirma = new JButton("Criar trem");
+        botaoConfirma.addActionListener(evento -> {
+            String textoId = campoIdTrem.getText();
+            int idTrem = Integer.parseInt(textoId);
+            Garagem.cadastrarTrem(idTrem);
+        });
 
         JPanel painel = new JPanel(new GridLayout(6,2));
         painel.add(textoLocomotivas);
         painel.add(listaLocomotivas);
         painel.add(textoVagoes);
         painel.add(listaVagoes);
+        painel.add(campoIdTrem);
+        painel.add(botaoConfirma);
 
         add(painel);
     }
