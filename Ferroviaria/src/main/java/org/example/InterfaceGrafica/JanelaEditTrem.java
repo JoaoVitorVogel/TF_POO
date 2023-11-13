@@ -1,15 +1,12 @@
 package org.example.InterfaceGrafica;
 
 import javax.swing.*;
-
 import org.example.Garagem;
-
 import java.awt.*;
 
-public class JanelaGaragens extends JFrame{
-    
-    public JanelaGaragens(){
-        super("Garagens");
+public class JanelaEditTrem extends JFrame {
+    public JanelaEditTrem(){
+        super("Edição do trem");
 
         // Lista de locomotivas
         JLabel textoLocomotivas = new JLabel("Lista de locomotivas na garagem");
@@ -22,9 +19,9 @@ public class JanelaGaragens extends JFrame{
         // Lista de trens
         JLabel textoTrens = new JLabel("Lista de trens na garagem");
         JLabel listaTrens = new JLabel(Garagem.toStringTrens());
-        
-        //Mostra trens criados
-        
+
+        //
+
 
         JPanel painel = new JPanel(new GridLayout(6,2));
         painel.add(textoLocomotivas);
