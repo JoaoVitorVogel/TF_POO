@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import javax.swing.SwingUtilities;
 
+import org.example.InterfaceGrafica.JanelaPrincipal;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;

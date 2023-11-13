@@ -1,6 +1,9 @@
-package org.example;
+package org.example.InterfaceGrafica;
 
 import javax.swing.*;
+
+import org.example.Garagem;
+
 import java.awt.*;
 
 public class JanelaGaragens extends JFrame{
