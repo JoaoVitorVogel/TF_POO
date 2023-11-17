@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-
-import org.example.InterfaceGrafica.JanelaPrincipal;
 import org.example.InterfaceGrafica.TelaMenu;
 
 import com.opencsv.CSVReader;

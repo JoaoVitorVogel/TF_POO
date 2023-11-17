@@ -265,7 +265,7 @@ public class Garagem {
     }
 
     public static String toStringLocomotivas() {
-        return "" + garagemLocomotivas;
+        return " " + garagemLocomotivas;
     }
 
     public static String toStringVagoes() {
@@ -278,7 +278,7 @@ public class Garagem {
         } else {
             String tremList = "\n";
             for (Trem t : garagemTrens) {
-                tremList = tremList.concat(t.toString() + "\n");
+                tremList = tremList.concat(t.toString() + "    " );
             }
             return tremList;
         }

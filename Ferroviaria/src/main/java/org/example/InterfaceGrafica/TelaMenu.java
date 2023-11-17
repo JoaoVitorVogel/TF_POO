@@ -4,6 +4,8 @@
  */
 package org.example.InterfaceGrafica;
 
+import org.example.Garagem;
+
 /**
  *
  * @author carol
@@ -103,11 +105,11 @@ public class TelaMenu extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Teste");
+        jLabel5.setText(Garagem.toStringTrens());
 
-        jLabel6.setText("Teste2");
+        jLabel6.setText(Garagem.toStringLocomotivas());
 
-        jLabel7.setText("Teste3");
+        jLabel7.setText(Garagem.toStringVagoes());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
