@@ -2,17 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+package org.example.InterfaceGrafica;
 
 /**
  *
  * @author carol
  */
-public class DesfazerTrem extends javax.swing.JPanel {
+public class TelaDesfazerTrem extends javax.swing.JPanel {
 
     /**
-     * Creates new form DesfazerTrem
+     * Creates new form TelaDesfazerTrem
      */
-    public DesfazerTrem() {
+    public TelaDesfazerTrem() {
         initComponents();
     }
 

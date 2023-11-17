@@ -91,10 +91,10 @@ public class TelaMenu extends javax.swing.JPanel {
         jLabel4.setText("Locomotivas");
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 102));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 102));
         jSeparator2.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
