@@ -4,9 +4,11 @@ import java.security.InvalidParameterException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import org.example.InterfaceGrafica.JanelaPrincipal;
+import org.example.InterfaceGrafica.TelaMenu;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
@@ -88,14 +90,18 @@ public class Main {
 
     public static void main(String[] ARGS) {
         criaEmpresa();
-        SwingUtilities.invokeLater(() -> new Main());
-    }
-
-    public Main() {
-        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
-        janelaPrincipal.setSize(400, 300);
-        janelaPrincipal.setLocationRelativeTo(null);
-        janelaPrincipal.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Tela Principal");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            TelaMenu telaMenu = new TelaMenu();
+            
+            frame.getContentPane().add(telaMenu);
+            
+            frame.pack();
+            frame.setLocationRelativeTo(null); // Centraliza a janela na tela
+            frame.setVisible(true);
+        });
     }
 
     // public static boolean menu() { // Menu interativo
