@@ -296,4 +296,15 @@ public class Garagem {
         return garagemTrens;
     }
 
+    public int getQuantiaLocomotivas() {
+        return garagemLocomotivas.size();
+    }
+
+    public int getQuantiaVagao(){
+        return garagemVagoes.size();
+    }
+
+    public int getQuantiaTrem(){
+        return garagemTrens.size();
+    }
 }
