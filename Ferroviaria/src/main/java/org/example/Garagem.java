@@ -7,7 +7,7 @@ import java.util.List;
 public class Garagem {
     private static List<Locomotiva> garagemLocomotivas = new ArrayList<>();
     private static List<Vagao> garagemVagoes = new ArrayList<>();
-    public static List<Trem> garagemTrens = new ArrayList<>();
+    private static List<Trem> garagemTrens = new ArrayList<>();
 
     /*
      * Os seguidos 3 metodos sao responsaveis por adicionar os objetos informados

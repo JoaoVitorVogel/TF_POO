@@ -188,7 +188,7 @@ public class Menu extends javax.swing.JFrame {
 
     // ação salvar
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {
-        Main.atualizaArquivos();
+        //Main.atualizaArquivos();
     }
 
     // ação desmontar trem

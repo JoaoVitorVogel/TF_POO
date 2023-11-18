@@ -39,12 +39,12 @@ public class DesmontaTrem extends javax.swing.JFrame {
             }
         });
 
-        String[] a = new String[];
-         for(int i = 0; i<5; i++){
-            a[i] = String.valueOf(Trem.getId());
-         }
+        // String[] a = new String[];
+        //  for(int i = 0; i<5; i++){
+        //     a[i] = String.valueOf(Trem.getId());
+        //  }
 
-        IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(a));
+        // IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(a));
            
         jLabel1.setText("Selecione um trem");
 
@@ -95,7 +95,7 @@ public class DesmontaTrem extends javax.swing.JFrame {
     //ação salvar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        Main.atualizaArquivos();
+        //Main.atualizaArquivos();
     }
 
     public static void main(String args[]) {
