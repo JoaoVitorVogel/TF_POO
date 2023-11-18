@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class Trem {
 
-    private static int id;
+    private int id;
     private double capacidadeDeVagoes; // soma da capacidade de vagoes de cada locomotiva
     private List<Carro> listaCarro = new ArrayList<>();
 
     protected Trem(int id) {
-        Trem.id = id;
+        this.id = id;
     }
 
     protected void addLocomotiva(Locomotiva locomotiva) {
@@ -71,7 +71,7 @@ public class Trem {
         return cont;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
