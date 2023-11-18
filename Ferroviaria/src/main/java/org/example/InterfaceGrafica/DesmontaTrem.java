@@ -1,5 +1,9 @@
 package org.example.InterfaceGrafica;
 
+import org.example.Garagem;
+import org.example.Main;
+import org.example.Trem;
+
 /**
  * @author JoãoVitorVogel
  */
@@ -35,8 +39,13 @@ public class DesmontaTrem extends javax.swing.JFrame {
             }
         });
 
-        IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        String[] a = new String[];
+         for(int i = 0; i<5; i++){
+            a[i] = String.valueOf(Trem.getId());
+         }
 
+        IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(a));
+           
         jLabel1.setText("Selecione um trem");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,7 +94,8 @@ public class DesmontaTrem extends javax.swing.JFrame {
 
     //ação salvar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+
+        Main.atualizaArquivos();
     }
 
     public static void main(String args[]) {
