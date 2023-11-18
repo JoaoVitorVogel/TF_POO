@@ -141,7 +141,7 @@ public class CriaTrem extends javax.swing.JFrame {
 
     //ação cancelar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        CriaTrem.this.dispose();
     }
 
     //ação insere id trem
