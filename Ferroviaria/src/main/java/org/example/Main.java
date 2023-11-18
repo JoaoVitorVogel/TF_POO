@@ -352,7 +352,7 @@ public class Main {
             FileWriter fileWriter = new FileWriter(criaLocomotiva, true);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
 
-            List<Locomotiva> garagemLocomotivas = garagem.getGaragemLocomotivas();
+            List<Locomotiva> garagemLocomotivas = Garagem.getGaragemLocomotivas();
 
             try (FileWriter writer = new FileWriter(criaLocomotiva, false)) {
                 writer.write("");

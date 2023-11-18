@@ -284,7 +284,7 @@ public class Garagem {
         }
     }
 
-    public List<Locomotiva> getGaragemLocomotivas() {
+    public static List<Locomotiva> getGaragemLocomotivas() {
         return garagemLocomotivas;
     }
 
@@ -296,15 +296,15 @@ public class Garagem {
         return garagemTrens;
     }
 
-    public int getQuantiaLocomotivas() {
+    public static int getQuantiaLocomotivas() {
         return garagemLocomotivas.size();
     }
 
-    public int getQuantiaVagao(){
+    public static int getQuantiaVagao(){
         return garagemVagoes.size();
     }
 
-    public int getQuantiaTrem(){
+    public static int getQuantiaTrem(){
         return garagemTrens.size();
     }
 }

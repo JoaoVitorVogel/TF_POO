@@ -1,5 +1,7 @@
 package org.example.InterfaceGrafica;
 
+import org.example.Garagem;
+
 /**
  * @author JoãoVitorVogel
  */
@@ -35,7 +37,7 @@ public class CriaTrem extends javax.swing.JFrame {
         jSlider1.setBackground(new java.awt.Color(255, 255, 255));
         jSlider1.setFont(new java.awt.Font("Segoe UI", 0, 8)); 
         jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(10);
+        jSlider1.setMaximum(Garagem.getQuantiaLocomotivas());
         jSlider1.setMinimum(1);
         jSlider1.setMinorTickSpacing(1);
         jSlider1.setPaintLabels(true);
@@ -64,8 +66,8 @@ public class CriaTrem extends javax.swing.JFrame {
         jSlider3.setBackground(new java.awt.Color(255, 255, 255));
         jSlider3.setFont(new java.awt.Font("Segoe UI", 0, 8)); 
         jSlider3.setMajorTickSpacing(1);
-        jSlider3.setMaximum(50);
-        jSlider3.setMinimum(1);
+        jSlider3.setMaximum(Garagem.getQuantiaVagao());
+        jSlider3.setMinimum(0);
         jSlider3.setMinorTickSpacing(1);
         jSlider3.setPaintLabels(true);
         jSlider3.setPaintTicks(true);
