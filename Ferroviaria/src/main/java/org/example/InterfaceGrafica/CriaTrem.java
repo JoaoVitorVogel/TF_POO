@@ -138,7 +138,10 @@ public class CriaTrem extends javax.swing.JFrame {
 
     //ação salvar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        int idTrem = Integer.parseInt(jTextField1.getText());
+        int quantiaLocomotiva = jSlider1.getValue();
+        int quantiaVagao = jSlider3.getValue();
+        Garagem.criaTrem(idTrem, quantiaLocomotiva, quantiaVagao);
     }
 
     //ação cancelar
