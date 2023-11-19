@@ -290,6 +290,7 @@ public class Garagem {
         return "" + garagemVagoes;
     }
 
+
     public static String toStringTrens() {
         if (garagemTrens.isEmpty()) {
             return "<vazia>";
@@ -299,6 +300,55 @@ public class Garagem {
                 tremList = tremList.concat(t.toString() + "    " );
             }
             return tremList;
+        }
+    }
+
+    public static String toStringTrensHTML(){
+        if (garagemTrens.isEmpty()) {
+            return "<vazia>";
+        } else {
+            String tremList = "<html>";
+            for (Trem t : garagemTrens) {
+                tremList = tremList.concat(t.toStringHTML() + "<br>" );
+            }
+            tremList = tremList.concat("</html>");
+            return tremList;
+        }
+    }
+
+    public static String toStringVagoesHTML(){
+        if (garagemVagoes.isEmpty()){
+            return "<vazia>";
+        } else {
+            String vagaoList = "<html>";
+            int cont = 0;
+            for(Vagao v : garagemVagoes){
+                cont++;
+                vagaoList = vagaoList.concat(v.toString() + " ");
+                if(cont == 30){
+                    vagaoList = vagaoList.concat("<br>");
+                }
+            }
+            vagaoList = vagaoList.concat("</html>");
+            return vagaoList;
+        }
+    }
+
+    public static String toStringLocomotivasHTML(){
+        if (garagemLocomotivas.isEmpty()){
+            return "<vazia>";
+        } else {
+            String locomotivaList = "<html>";
+            int cont = 0;
+            for(Locomotiva l : garagemLocomotivas){
+                cont++;
+                locomotivaList = locomotivaList.concat(l.toString() + " ");
+                if( cont == 30){
+                    locomotivaList = locomotivaList.concat("<br");
+                }
+            }
+            locomotivaList = locomotivaList.concat("</html>");
+            return locomotivaList;
         }
     }
     

@@ -89,6 +89,40 @@ public class Trem {
         return listaLocomotiva;
     }
 
+    public String toStringVagoesHTML(){
+        if (getListaVagao().isEmpty()){
+            return "<vazia>";
+        } else {
+            String vagaoList = "";
+            int cont = 0;
+            for(Vagao v : getListaVagao()){
+                cont++;
+                vagaoList = vagaoList.concat(v.toString() + " ");
+                if(cont == 30){
+                    vagaoList = vagaoList.concat("<br>");
+                }
+            }
+            return vagaoList;
+        }
+    }
+
+    public String toStringLocomotivasHTML(){
+        if (getListaLocomotivas().isEmpty()){
+            return "<vazia>";
+        } else {
+            String locomotivaList = "";
+            int cont = 0;
+            for(Locomotiva l : getListaLocomotivas()){
+                cont++;
+                locomotivaList = locomotivaList.concat(l.toString() + " ");
+                if( cont == 30){
+                    locomotivaList = locomotivaList.concat("<br");
+                }
+            }
+            return locomotivaList;
+        }
+    }
+
     public List<Vagao> getListaVagao() {
         List<Vagao> listaVagao = new ArrayList<Vagao>();
         for (Carro l : listaCarro) {
@@ -114,13 +148,16 @@ public class Trem {
         this.listaCarro = listaCarro;
     }
 
-    @Override
+    public String toStringHTML() {
+        return "Trem T" + id + " Locomotivas: " + toStringLocomotivasHTML() + " Vagoõs: " + toStringVagoesHTML();
+    }
+    
     public String toString() {
-        return "[ID: T" + id + " Locomotivas: " + getListaLocomotivas() + " Vagoõs:" + getListaVagao()
+        return "[ID: T" + id + " Locomotivas: " + getListaLocomotivas() + " Vagoõs: " + getListaVagao()
                 + " Capacidade de Vagoes:"
                 + getCapacidadeDeVagoes() + "]";
     }
-
+        
     @Override
     public boolean equals(Object o) {
         if (this == o)

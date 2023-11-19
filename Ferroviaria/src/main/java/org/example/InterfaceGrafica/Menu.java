@@ -36,11 +36,11 @@ public class Menu extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator1.setOpaque(true);
 
-        jLabel5.setText(Garagem.toStringTrens());
+        jLabel5.setText(Garagem.toStringTrensHTML());
 
-        jLabel6.setText(Garagem.toStringLocomotivas());
+        jLabel6.setText(Garagem.toStringLocomotivasHTML());
 
-        jLabel7.setText(Garagem.toStringVagoes());
+        jLabel7.setText(Garagem.toStringVagoesHTML());
 
         jLabel1.setFont(new java.awt.Font("Consolas", 3, 48));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,17 +49,17 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jLabel2.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/org/example/InterfaceGrafica/trainIcon.png")));
+                new javax.swing.ImageIcon(getClass().getResource("/org/example/Imagens/trainIcon.png")));
         jLabel2.setText("Trens");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jLabel3.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/org/example/InterfaceGrafica/railwayIcon.png")));
+                new javax.swing.ImageIcon(getClass().getResource("/org/example/Imagens/railwayIcon.png")));
         jLabel3.setText("Vagões");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jLabel4.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/org/example/InterfaceGrafica/TrainCompleteIcon.png")));
+                getClass().getResource("/org/example/Imagens/TrainCompleteIcon.png")));
         jLabel4.setText("Locomotivas");
 
         jMenu1.setText("Arquivo");
