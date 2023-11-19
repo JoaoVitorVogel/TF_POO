@@ -13,11 +13,11 @@ public class Garagem {
      * Os seguidos 3 metodos sao responsaveis por adicionar os objetos informados
      * nas respectivas 'garagens' utilizando 'add' do List
      */
-    public void cadastrarLocomotiva(int id, double pesoMaximo) {
+    public static void cadastrarLocomotiva(int id, double pesoMaximo) {
         garagemLocomotivas.add(new Locomotiva(id, pesoMaximo));
     }
 
-    public void cadastrarVagao(int id, double capacidadeCarga) {
+    public static void cadastrarVagao(int id, double capacidadeCarga) {
         garagemVagoes.add(new Vagao(id, capacidadeCarga));
     }
 
@@ -93,7 +93,7 @@ public class Garagem {
      * do trem
      * - em seguida, remove o ultimo elemento da lista de locomotivas do trem;
      */
-    public void desacoplarLocomotiva(Trem trem) throws InvalidParameterException {
+    public static void desacoplarLocomotiva(Trem trem) throws InvalidParameterException {
         if (trem.contaVagao() != 0) {
             throw new InvalidParameterException(
                     "Não é possível desacoplar locomotivas sem antes desacoplar todos os vagões.");
@@ -106,7 +106,7 @@ public class Garagem {
      * - adiciona na 'garagemVagoes' o ultimo elemento da lisa de vagoes do trem
      * - em seguida, remove o ultimo elemento da lista de vagoes do trem;
      */
-    public void desacoplarVagao(Trem trem) {
+    public static void desacoplarVagao(Trem trem) {
         garagemVagoes.add(trem.getListaVagao().get(trem.getListaVagao().size() - 1));
         trem.getListaCarro().remove(trem.getListaCarro().size() - 1);
     }
@@ -334,6 +334,44 @@ public class Garagem {
         }
         for (int i = 0; i < quantiaVagao; i++) {
             Garagem.alocarVagao(Garagem.getUltimoVagao(),Garagem.getTrem(IDTrem));
+        }
+    }
+
+    public static int contaLocomotivaById(int idTrem){
+        return getTrem(idTrem).contaLocomotiva();
+    }
+
+    public static int contaVagaoById(int idTrem){
+        return getTrem(idTrem).contaVagao();
+    }
+
+    public static void atualizaTrem(int idTrem, int quantiaLocomotiva, int quantiaVagao) {
+
+        int diferenca = 0;
+        if(Garagem.contaVagaoById(idTrem) > quantiaVagao){
+            diferenca = (contaVagaoById(idTrem) - quantiaVagao);
+            for(int i=0; i < diferenca; i++){
+                Garagem.desacoplarVagao(Garagem.getTrem(idTrem));
+            }
+        }
+        if(Garagem.contaVagaoById(idTrem) < quantiaVagao){
+            diferenca = (quantiaVagao - contaVagaoById(idTrem));
+            for(int i=0; i < diferenca; i++){
+                Garagem.alocarVagao(Garagem.getUltimoVagao(), Garagem.getTrem(idTrem));
+            }
+        }
+
+        if(Garagem.contaLocomotivaById(idTrem) > quantiaLocomotiva){
+            diferenca = (contaLocomotivaById(idTrem) - quantiaLocomotiva);
+            for(int i=0; i < diferenca; i++){
+                Garagem.desacoplarLocomotiva(Garagem.getTrem(idTrem));
+            }
+        }
+        if(Garagem.contaLocomotivaById(idTrem) < quantiaLocomotiva){
+            diferenca = (quantiaLocomotiva - contaLocomotivaById(idTrem));
+            for(int i=0; i < diferenca; i++){
+                Garagem.alocarLocomotiva(Garagem.getUltimaLocomotiva(), Garagem.getTrem(idTrem));
+            }
         }
     }
 }

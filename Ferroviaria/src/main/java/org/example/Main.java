@@ -33,7 +33,7 @@ public class Main {
             for (String[] row : data) {
                 int id = Integer.parseInt(row[0]);
 
-                garagem.cadastrarVagao(id, 6.0);
+                Garagem.cadastrarVagao(id, 6.0);
             }
             csvReader.close();
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class Main {
             for (String[] row : data) {
                 int id = Integer.parseInt(row[0]);
 
-                garagem.cadastrarLocomotiva(id, 30.0);
+                Garagem.cadastrarLocomotiva(id, 30.0);
             }
             csvReader.close();
         } catch (IOException e) {
@@ -66,11 +66,11 @@ public class Main {
                     Garagem.cadastrarTrem(Integer.parseInt(listaRow[0]));
                     for (int i = 1; i < listaRow.length; i++) {
                         if (Integer.parseInt(listaRow[i]) < 100) {
-                            garagem.cadastrarVagao(Integer.parseInt(listaRow[i]), 6.0);
+                            Garagem.cadastrarVagao(Integer.parseInt(listaRow[i]), 6.0);
                             Garagem.alocarVagao(garagem.getVagao(Integer.parseInt(listaRow[i])),
                                     Garagem.getTrem(Integer.parseInt(listaRow[0])));
                         } else {
-                            garagem.cadastrarLocomotiva(Integer.parseInt(listaRow[i]), 30.0);
+                            Garagem.cadastrarLocomotiva(Integer.parseInt(listaRow[i]), 30.0);
                             Garagem.alocarLocomotiva(garagem.getLocomotiva(Integer.parseInt(listaRow[i])),
                                     Garagem.getTrem(Integer.parseInt(listaRow[0])));
                         }
@@ -203,7 +203,7 @@ public class Main {
             System.out.println("Insira o ID do trem:");
             int idTrem = keyboard.nextInt();
 
-            garagem.desacoplarLocomotiva(Garagem.getTrem(idTrem));
+            Garagem.desacoplarLocomotiva(Garagem.getTrem(idTrem));
             System.out.println(garagem);
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
@@ -218,7 +218,7 @@ public class Main {
             System.out.println("Insira o ID do trem:");
             int idTrem = keyboard.nextInt();
 
-            garagem.desacoplarVagao(Garagem.getTrem(idTrem));
+            Garagem.desacoplarVagao(Garagem.getTrem(idTrem));
             System.out.println(garagem);
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());
@@ -233,7 +233,7 @@ public class Main {
             System.out.println("Insira o ID do trem:");
             int idTrem = keyboard.nextInt();
 
-            garagem.desfazerTrem(Garagem.getTrem(idTrem));
+            Garagem.desfazerTrem(Garagem.getTrem(idTrem));
             System.out.println(garagem);
         } catch (InvalidParameterException e) {
             System.out.println(e.getMessage());

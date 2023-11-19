@@ -9,7 +9,7 @@ public class GaragemTest {
     public void example(){
         Garagem g =  new Garagem();
 
-        g.cadastrarVagao(1, 200);
+        Garagem.cadastrarVagao(1, 200);
         Vagao v = g.getVagao(1);
 
         double actual = v.getCapacidadeCarga();

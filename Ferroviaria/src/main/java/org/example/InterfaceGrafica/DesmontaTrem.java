@@ -1,7 +1,6 @@
 package org.example.InterfaceGrafica;
 
 import org.example.Garagem;
-import org.example.Main;
 
 /**
  * @author JoãoVitorVogel
