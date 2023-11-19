@@ -183,7 +183,7 @@ public class Menu extends javax.swing.JFrame {
 
     // ação fechar
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Menu.this.dispose();
     }
 
     // ação salvar
