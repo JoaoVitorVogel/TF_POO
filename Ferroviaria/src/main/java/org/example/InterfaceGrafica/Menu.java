@@ -196,6 +196,13 @@ public class Menu extends javax.swing.JFrame {
         new DesmontaTrem().setVisible(true);
     }
 
+    //Atualiza tela garagens
+    public static void AtualizaTela(){
+        jLabel5.setText(Garagem.toStringTrens());
+        jLabel6.setText(Garagem.toStringLocomotivas());
+        jLabel7.setText(Garagem.toStringVagoes());
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -228,9 +235,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private static javax.swing.JLabel jLabel5;
+    private static javax.swing.JLabel jLabel6;
+    private static javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

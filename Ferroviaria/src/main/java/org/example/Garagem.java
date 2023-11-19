@@ -242,12 +242,22 @@ public class Garagem {
      * - limpa a lista de vagoes e a lista de locomotivas do trem;
      * - remove o trem da garagem de trens;
      */
-    public void desfazerTrem(Trem trem) throws InvalidParameterException {
+    public static void desfazerTrem(Trem trem) throws InvalidParameterException {
         garagemVagoes.addAll(trem.getListaVagao());
         garagemLocomotivas.addAll(trem.getListaLocomotivas());
         trem.getListaVagao().clear();
         trem.getListaLocomotivas().clear();
         garagemTrens.remove(trem);
+    }
+
+    public static String[] getStringIds() {
+        String[] lista = new String[Garagem.getQuantiaTrem()];
+        int i = 0;
+        for (Trem t : Garagem.garagemTrens) {
+            lista[i] = String.valueOf(t.getId());
+            i++;
+        }
+        return lista;
     }
 
     @Override
