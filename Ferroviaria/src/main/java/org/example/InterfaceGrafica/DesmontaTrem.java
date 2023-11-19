@@ -2,7 +2,6 @@ package org.example.InterfaceGrafica;
 
 import org.example.Garagem;
 import org.example.Main;
-import org.example.Trem;
 
 /**
  * @author JoãoVitorVogel
@@ -39,12 +38,7 @@ public class DesmontaTrem extends javax.swing.JFrame {
             }
         });
 
-        // String[] a = new String[];
-        //  for(int i = 0; i<5; i++){
-        //     a[i] = String.valueOf(Trem.getId());
-        //  }
-
-        // IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(a));
+        IDTrem.setModel(new javax.swing.DefaultComboBoxModel<>(Garagem.getStringIds()));
            
         jLabel1.setText("Selecione um trem");
 
@@ -89,13 +83,14 @@ public class DesmontaTrem extends javax.swing.JFrame {
 
     //ação cancelar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-    
+        DesmontaTrem.this.dispose();
     }
 
     //ação salvar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-
-        //Main.atualizaArquivos();
+        String a = (String) IDTrem.getSelectedItem();
+        Garagem.desfazerTrem(Garagem.getTrem(Integer.parseInt(a)));
+        Main.atualizaArquivos();
     }
 
     public static void main(String args[]) {

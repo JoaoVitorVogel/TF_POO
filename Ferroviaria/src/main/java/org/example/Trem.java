@@ -99,15 +99,16 @@ public class Trem {
         return listaVagao;
     }
 
-    public List<Integer> getTremIds(){
+    public List<Integer> getTremIds() {
         List<Integer> ids = new ArrayList<>();
         ids.add(id);
         List<Carro> trem = getListaCarro();
-        for(Carro carro : trem){
+        for (Carro carro : trem) {
             ids.add(carro.getId());
         }
         return ids;
     }
+
 
     public void setListaCarro(List<Carro> listaCarro) {
         this.listaCarro = listaCarro;

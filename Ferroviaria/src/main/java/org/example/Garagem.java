@@ -140,7 +140,7 @@ public class Garagem {
      * Percorre a lista de trens e retorna o objeto 'Trem' com o mesmo ID,
      * se nao encontrar lanca uma Exception
      */
-    public Trem getTrem(int id) throws InvalidParameterException {
+    public static Trem getTrem(int id) throws InvalidParameterException {
         for (Trem t : garagemTrens) {
             if (t.getId() == id)
                 return t;
@@ -234,12 +234,22 @@ public class Garagem {
      * - limpa a lista de vagoes e a lista de locomotivas do trem;
      * - remove o trem da garagem de trens;
      */
-    public void desfazerTrem(Trem trem) throws InvalidParameterException {
+    public static void desfazerTrem(Trem trem) throws InvalidParameterException {
         garagemVagoes.addAll(trem.getListaVagao());
         garagemLocomotivas.addAll(trem.getListaLocomotivas());
         trem.getListaVagao().clear();
         trem.getListaLocomotivas().clear();
         garagemTrens.remove(trem);
+    }
+
+    public static String[] getStringIds() {
+        String[] lista = new String[Garagem.getQuantiaTrem()];
+        int i = 0;
+        for (Trem t : Garagem.garagemTrens) {
+            lista[i] = String.valueOf(t.getId());
+            i++;
+        }
+        return lista;
     }
 
     @Override
@@ -308,4 +318,6 @@ public class Garagem {
     public static int getQuantiaTrem(){
         return garagemTrens.size();
     }
+
+    
 }
