@@ -3,7 +3,7 @@ package org.example.InterfaceGrafica;
 import javax.swing.JSeparator;
 
 import org.example.Garagem;
-import org.example.Main;
+import org.example.IniciaGaragens;
 
 /**
  * @author JoãoVitorVogel
@@ -195,7 +195,7 @@ public class Menu extends javax.swing.JFrame {
 
     // ação salvar
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {
-        Main.atualizaArquivos();
+        IniciaGaragens.atualizaArquivos();
     }
 
     // ação desmontar trem

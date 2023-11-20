@@ -116,7 +116,7 @@ public class Garagem {
      * ID,
      * se nao encontrar lanca uma Exception
      */
-    public Locomotiva getLocomotiva(int id) throws InvalidParameterException {
+    public static Locomotiva getLocomotiva(int id) throws InvalidParameterException {
         for (Locomotiva l : garagemLocomotivas) {
             if (l.getId() == id)
                 return l;
@@ -128,7 +128,7 @@ public class Garagem {
      * Percorre a lista de vagoes e retorna o objeto 'Vagao' com o mesmo ID,
      * se nao encontrar lanca uma Exception
      */
-    public Vagao getVagao(int id) throws InvalidParameterException {
+    public static Vagao getVagao(int id) throws InvalidParameterException {
         for (Vagao v : garagemVagoes) {
             if (v.getId() == id)
                 return v;
@@ -136,10 +136,16 @@ public class Garagem {
         throw new InvalidParameterException("Vagão não encontrado.");
     }
 
+    /*
+     * Acessa a lista de vagoes e pega o ultimo da lista
+     */
     public static Vagao getUltimoVagao() {
         return garagemVagoes.get(garagemVagoes.size()-1);
     }
 
+    /*
+     * Acessa a lista de locomotivas e pega o ultimo da lista
+     */
     public static Locomotiva getUltimaLocomotiva() {
         return garagemLocomotivas.get(garagemLocomotivas.size()-1);
     }
@@ -156,84 +162,49 @@ public class Garagem {
         throw new InvalidParameterException("Trem não encontrado.");
     }
 
-    /*
-     * Percorre a lista de trens e compara com o trem informado no parametro,
-     * armazena em uma lista de String as informacoes (em formato de String) do trem
-     * e retorna essa lista de informacoes;
-     */
-    @Deprecated
-    public List<String> inspecionarTrem(Trem trem) {
-        List<String> info = new ArrayList<>();
-        for (Trem t : garagemTrens) {
-            if (t.equals(trem)) {
-                info.add(String.valueOf(t.getId()));
-                info.add(String.valueOf(t.getListaVagao()));
-                info.add(String.valueOf(t.getListaLocomotivas()));
-            }
+    public static void criaTrem(int IDTrem, int quantiaLocomotiva, int quantiaVagao){
+        Garagem.cadastrarTrem(IDTrem);
+        for (int i = 0; i < quantiaLocomotiva; i++){
+            Garagem.alocarLocomotiva(Garagem.getUltimaLocomotiva(), Garagem.getTrem(IDTrem));
         }
-        return info;
+        for (int i = 0; i < quantiaVagao; i++) {
+            Garagem.alocarVagao(Garagem.getUltimoVagao(),Garagem.getTrem(IDTrem));
+        }
     }
 
     /*
-     * Percorre a lista de Trens, para cada trem encontrado, percorre a lista de
-     * locomotivas tentando
-     * encontrar a locomotiva com o ID informado no parametro, entao retorna a ID do
-     * trem que essa
-     * locomotiva esta acoplada.
-     * Se nao encontrar, procura na lista de locomotivas. Caso encontre, lança uma
-     * Exception informando
-     * que a unidade nao esta alocada a um trem, mas sim esta na garagem de
-     * locomotivas nao utilizadas.
-     * Se nao encontrar na garagem de locomotivas, lanca uma Exception informando
-     * que a unidade informada
-     * nao pode ser encontrada.
-     * Nota: implementar um algoritimo mais eficiente e reduzir o uso de 'for';
+     * metodo que recebe a aquantia de locomotivas e vagoes juntamente do id do trem
+     * responsavel por atualizar o total de objetos vagoes e locomotivas no trem
+     * de acordo com s valores recebidos
      */
-    public int inspecionarLocomotiva(int id) throws InvalidParameterException {
-        for (Trem t : garagemTrens) {
-            for (Locomotiva l : t.getListaLocomotivas()) {
-                if (l.getId() == id) {
-                    return l.getTremAlocado().getId();
-                }
-            }
-        }
-        for (Locomotiva l : garagemLocomotivas) {
-            if (l.getId() == id) {
-                throw new InvalidParameterException("Unidade não alocada a nenhum trem");
-            }
-        }
-        throw new InvalidParameterException("Unidade não encontrada");
-    }
+    public static void atualizaTrem(int idTrem, int quantiaLocomotiva, int quantiaVagao) {
 
-    /*
-     * Percorre a lista de Trens, para cada trem encontrado, percorre a lista de
-     * vagoes tentando
-     * encontrar o vagao com o ID informado no parametro, entao retorna a ID do trem
-     * que esse vagao
-     * esta acoplado.
-     * Se nao encontrar, procura na lista de vagoes. Caso encontre, lança uma
-     * Exception informando
-     * que a unidade nao esta alocada a um trem, mas sim esta na garagem de vagoes
-     * nao utilizadas.
-     * Se nao encontrar na garagem de vagoes, lanca uma Exception informando que a
-     * unidade informada
-     * nao pode ser encontrada.
-     * Nota: implementar um algoritimo mais eficiente e reduzir o uso de 'for';
-     */
-    public int inspecionarVagao(int id) throws InvalidParameterException {
-        for (Trem t : garagemTrens) {
-            for (Vagao v : t.getListaVagao()) {
-                if (v.getId() == id) {
-                    return v.getTremAlocado().getId();
-                }
+        int diferenca = 0;
+        if(Garagem.contaVagaoById(idTrem) > quantiaVagao){
+            diferenca = (contaVagaoById(idTrem) - quantiaVagao);
+            for(int i=0; i < diferenca; i++){
+                Garagem.desacoplarVagao(Garagem.getTrem(idTrem));
             }
         }
-        for (Vagao v : garagemVagoes) {
-            if (v.getId() == id) {
-                throw new InvalidParameterException("Unidade não alocada a nenhum trem");
+        if(Garagem.contaVagaoById(idTrem) < quantiaVagao){
+            diferenca = (quantiaVagao - contaVagaoById(idTrem));
+            for(int i=0; i < diferenca; i++){
+                Garagem.alocarVagao(Garagem.getUltimoVagao(), Garagem.getTrem(idTrem));
             }
         }
-        throw new InvalidParameterException("Unidade não encontrada");
+
+        if(Garagem.contaLocomotivaById(idTrem) > quantiaLocomotiva){
+            diferenca = (contaLocomotivaById(idTrem) - quantiaLocomotiva);
+            for(int i=0; i < diferenca; i++){
+                Garagem.desacoplarLocomotiva(Garagem.getTrem(idTrem));
+            }
+        }
+        if(Garagem.contaLocomotivaById(idTrem) < quantiaLocomotiva){
+            diferenca = (quantiaLocomotiva - contaLocomotivaById(idTrem));
+            for(int i=0; i < diferenca; i++){
+                Garagem.alocarLocomotiva(Garagem.getUltimaLocomotiva(), Garagem.getTrem(idTrem));
+            }
+        }
     }
 
     /*
@@ -250,6 +221,9 @@ public class Garagem {
         garagemTrens.remove(trem);
     }
 
+    /*
+     * Busca na lista de trens todos os trens, e armazena seus ids em uma string
+     */
     public static String[] getStringIds() {
         String[] lista = new String[Garagem.getQuantiaTrem()];
         int i = 0;
@@ -258,6 +232,38 @@ public class Garagem {
             i++;
         }
         return lista;
+    }
+    
+    public static List<Locomotiva> getGaragemLocomotivas() {
+        return garagemLocomotivas;
+    }
+
+    public static List<Vagao> getGaragemVagoes() {
+        return garagemVagoes;
+    }
+
+    public static List<Trem> getGaragemTrens() {
+        return garagemTrens;
+    }
+
+    public static int getQuantiaLocomotivas() {
+        return garagemLocomotivas.size();
+    }
+
+    public static int getQuantiaVagao(){
+        return garagemVagoes.size();
+    }
+
+    public static int getQuantiaTrem(){
+        return garagemTrens.size();
+    }
+
+    public static int contaLocomotivaById(int idTrem){
+        return getTrem(idTrem).contaLocomotiva();
+    }
+
+    public static int contaVagaoById(int idTrem){
+        return getTrem(idTrem).contaVagao();
     }
 
     @Override
@@ -349,79 +355,6 @@ public class Garagem {
             }
             locomotivaList = locomotivaList.concat("</html>");
             return locomotivaList;
-        }
-    }
-    
-
-    public static List<Locomotiva> getGaragemLocomotivas() {
-        return garagemLocomotivas;
-    }
-
-    public List<Vagao> getGaragemVagoes() {
-        return garagemVagoes;
-    }
-
-    public List<Trem> getGaragemTrens() {
-        return garagemTrens;
-    }
-
-    public static int getQuantiaLocomotivas() {
-        return garagemLocomotivas.size();
-    }
-
-    public static int getQuantiaVagao(){
-        return garagemVagoes.size();
-    }
-
-    public static int getQuantiaTrem(){
-        return garagemTrens.size();
-    }
-
-    public static void criaTrem(int IDTrem, int quantiaLocomotiva, int quantiaVagao){
-        Garagem.cadastrarTrem(IDTrem);
-        for (int i = 0; i < quantiaLocomotiva; i++){
-            Garagem.alocarLocomotiva(Garagem.getUltimaLocomotiva(), Garagem.getTrem(IDTrem));
-        }
-        for (int i = 0; i < quantiaVagao; i++) {
-            Garagem.alocarVagao(Garagem.getUltimoVagao(),Garagem.getTrem(IDTrem));
-        }
-    }
-
-    public static int contaLocomotivaById(int idTrem){
-        return getTrem(idTrem).contaLocomotiva();
-    }
-
-    public static int contaVagaoById(int idTrem){
-        return getTrem(idTrem).contaVagao();
-    }
-
-    public static void atualizaTrem(int idTrem, int quantiaLocomotiva, int quantiaVagao) {
-
-        int diferenca = 0;
-        if(Garagem.contaVagaoById(idTrem) > quantiaVagao){
-            diferenca = (contaVagaoById(idTrem) - quantiaVagao);
-            for(int i=0; i < diferenca; i++){
-                Garagem.desacoplarVagao(Garagem.getTrem(idTrem));
-            }
-        }
-        if(Garagem.contaVagaoById(idTrem) < quantiaVagao){
-            diferenca = (quantiaVagao - contaVagaoById(idTrem));
-            for(int i=0; i < diferenca; i++){
-                Garagem.alocarVagao(Garagem.getUltimoVagao(), Garagem.getTrem(idTrem));
-            }
-        }
-
-        if(Garagem.contaLocomotivaById(idTrem) > quantiaLocomotiva){
-            diferenca = (contaLocomotivaById(idTrem) - quantiaLocomotiva);
-            for(int i=0; i < diferenca; i++){
-                Garagem.desacoplarLocomotiva(Garagem.getTrem(idTrem));
-            }
-        }
-        if(Garagem.contaLocomotivaById(idTrem) < quantiaLocomotiva){
-            diferenca = (quantiaLocomotiva - contaLocomotivaById(idTrem));
-            for(int i=0; i < diferenca; i++){
-                Garagem.alocarLocomotiva(Garagem.getUltimaLocomotiva(), Garagem.getTrem(idTrem));
-            }
         }
     }
 }
