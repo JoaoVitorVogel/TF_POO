@@ -198,9 +198,9 @@ public class Menu extends javax.swing.JFrame {
 
     //Atualiza tela garagens
     public static void AtualizaTela(){
-        jLabel5.setText(Garagem.toStringTrens());
-        jLabel6.setText(Garagem.toStringLocomotivas());
-        jLabel7.setText(Garagem.toStringVagoes());
+        jLabel5.setText(Garagem.toStringTrensHTML());
+        jLabel6.setText(Garagem.toStringLocomotivasHTML());
+        jLabel7.setText(Garagem.toStringVagoesHTML());
     }
 
     /**
