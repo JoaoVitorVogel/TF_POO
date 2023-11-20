@@ -14,9 +14,14 @@ public class Trem {
         this.id = id;
     }
 
-    protected void addLocomotiva(Locomotiva locomotiva) {
-        listaCarro.add(locomotiva);
-        capacidadeDeVagoes = getCapacidadeDeVagoes();
+    public List<Integer> getTremIds() {
+        List<Integer> ids = new ArrayList<>();
+        ids.add(id);
+        List<Carro> trem = getListaCarro();
+        for (Carro carro : trem) {
+            ids.add(carro.getId());
+        }
+        return ids;
     }
 
     public double getCapacidadeDeVagoes() {
@@ -35,6 +40,43 @@ public class Trem {
         } else {
             return capacidade;
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<Carro> getListaCarro() {
+        return listaCarro;
+    }
+
+    public List<Vagao> getListaVagao() {
+        List<Vagao> listaVagao = new ArrayList<Vagao>();
+        for (Carro l : listaCarro) {
+            if (l instanceof Vagao) {
+                listaVagao.add((Vagao) l);
+            }
+        }
+        return listaVagao;
+    }
+
+    public List<Locomotiva> getListaLocomotivas() {
+        List<Locomotiva> listaLocomotiva = new ArrayList<Locomotiva>();
+        for (Carro l : listaCarro) {
+            if (l instanceof Locomotiva) {
+                listaLocomotiva.add((Locomotiva) l);
+            }
+        }
+        return listaLocomotiva;
+    }
+
+    public void setListaCarro(List<Carro> listaCarro) {
+        this.listaCarro = listaCarro;
+    }
+
+     protected void addLocomotiva(Locomotiva locomotiva) {
+        listaCarro.add(locomotiva);
+        capacidadeDeVagoes = getCapacidadeDeVagoes();
     }
 
     protected void addVagao(Vagao vagao) throws ArrayIndexOutOfBoundsException {
@@ -71,24 +113,6 @@ public class Trem {
         return cont;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public List<Carro> getListaCarro() {
-        return listaCarro;
-    }
-
-    public List<Locomotiva> getListaLocomotivas() {
-        List<Locomotiva> listaLocomotiva = new ArrayList<Locomotiva>();
-        for (Carro l : listaCarro) {
-            if (l instanceof Locomotiva) {
-                listaLocomotiva.add((Locomotiva) l);
-            }
-        }
-        return listaLocomotiva;
-    }
-
     public String toStringVagoesHTML(){
         if (getListaVagao().isEmpty()){
             return "<vazia>";
@@ -123,41 +147,10 @@ public class Trem {
         }
     }
 
-    public List<Vagao> getListaVagao() {
-        List<Vagao> listaVagao = new ArrayList<Vagao>();
-        for (Carro l : listaCarro) {
-            if (l instanceof Vagao) {
-                listaVagao.add((Vagao) l);
-            }
-        }
-        return listaVagao;
-    }
-
-    public List<Integer> getTremIds() {
-        List<Integer> ids = new ArrayList<>();
-        ids.add(id);
-        List<Carro> trem = getListaCarro();
-        for (Carro carro : trem) {
-            ids.add(carro.getId());
-        }
-        return ids;
-    }
-
-
-    public void setListaCarro(List<Carro> listaCarro) {
-        this.listaCarro = listaCarro;
-    }
-
     public String toStringHTML() {
         return "Trem T" + id + " Locomotivas: " + toStringLocomotivasHTML() + " Vagoõs: " + toStringVagoesHTML();
     }
     
-    public String toString() {
-        return "[ID: T" + id + " Locomotivas: " + getListaLocomotivas() + " Vagoõs: " + getListaVagao()
-                + " Capacidade de Vagoes:"
-                + getCapacidadeDeVagoes() + "]";
-    }
-        
     @Override
     public boolean equals(Object o) {
         if (this == o)
