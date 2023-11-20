@@ -8,6 +8,4 @@ public class Main {
         IniciaGaragens.criaEmpresa();
         new Menu().setVisible(true);
     }
-
-    
 }

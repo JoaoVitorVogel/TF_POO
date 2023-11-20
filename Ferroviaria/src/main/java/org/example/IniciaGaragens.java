@@ -10,7 +10,7 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;
 
 public class IniciaGaragens {
-    public static void criaEmpresa() { // Método para criar as locomotivas e vagões
+    public static void criaEmpresa() {
         String criaVagaoFile = "Ferroviaria/arquivos/inicialVagao.csv";
         String criaLocomotivaFile = "Ferroviaria/arquivos/inicialLocomotiva.csv";
         String criaComposicaoFile = "Ferroviaria/arquivos/inicialComposicao.csv";
