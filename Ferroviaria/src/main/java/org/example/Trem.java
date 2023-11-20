@@ -10,10 +10,24 @@ public class Trem {
     private double capacidadeDeVagoes; // soma da capacidade de vagoes de cada locomotiva
     private List<Carro> listaCarro = new ArrayList<>();
 
+
+    /** Método construtor do objeto Trem
+     * @param id
+     */
     protected Trem(int id) {
         this.id = id;
     }
 
+    /** Método de acesso ao Id do trem
+     * @return
+     */
+    public int getId() {
+        return id;
+    }
+
+    /** Métoco que retorna um ArrayList com os IDS de todos os trens criados
+     * @return
+     */
     public List<Integer> getTremIds() {
         List<Integer> ids = new ArrayList<>();
         ids.add(id);
@@ -24,6 +38,9 @@ public class Trem {
         return ids;
     }
 
+    /** Método que calcula a capacidade de vagões que um trem pode levar
+     * @return
+     */
     public double getCapacidadeDeVagoes() {
         double capacidade = 0.0;
         int cont = 0;
@@ -42,14 +59,16 @@ public class Trem {
         }
     }
 
-    public int getId() {
-        return id;
-    }
-
+    /** Metodo que retorna uma lista de carro acopladas ao trem
+     * @return
+     */
     public List<Carro> getListaCarro() {
         return listaCarro;
     }
 
+    /** Metodo que retorna uma lista de Vagões acopladas ao trem
+     * @return
+     */
     public List<Vagao> getListaVagao() {
         List<Vagao> listaVagao = new ArrayList<Vagao>();
         for (Carro l : listaCarro) {
@@ -60,6 +79,9 @@ public class Trem {
         return listaVagao;
     }
 
+    /** Metodo que retorna uma lista de Locomotivas acopladas ao trem
+     * @return
+     */
     public List<Locomotiva> getListaLocomotivas() {
         List<Locomotiva> listaLocomotiva = new ArrayList<Locomotiva>();
         for (Carro l : listaCarro) {
@@ -70,15 +92,18 @@ public class Trem {
         return listaLocomotiva;
     }
 
-    public void setListaCarro(List<Carro> listaCarro) {
-        this.listaCarro = listaCarro;
-    }
-
-     protected void addLocomotiva(Locomotiva locomotiva) {
+    /** Método que adiciona uma locomotiva ao trem, é utilizado em outros métodos para editar e criar um trem
+     * @param locomotiva
+     */
+    protected void addLocomotiva(Locomotiva locomotiva) {
         listaCarro.add(locomotiva);
         capacidadeDeVagoes = getCapacidadeDeVagoes();
     }
 
+    /** Método que adiciona um Vagão ao trem, é utilizado em outros métodos para editar e criar um trem
+     * @param vagao
+     * @throws ArrayIndexOutOfBoundsException
+     */
     protected void addVagao(Vagao vagao) throws ArrayIndexOutOfBoundsException {
         int cont = 0;
         for (Carro l : listaCarro) {
@@ -93,6 +118,9 @@ public class Trem {
         }
     }
 
+    /** Método que conta quantas Locomotivas tem em m Trem
+     * @return
+     */
     public int contaLocomotiva() {
         int cont = 0;
         for (Carro l : listaCarro) {
@@ -103,6 +131,9 @@ public class Trem {
         return cont;
     }
 
+    /** Método que conta quantos Vagões tem em m Trem
+     * @return
+     */
     public int contaVagao() {
         int cont = 0;
         for (Carro l : listaCarro) {
@@ -113,6 +144,9 @@ public class Trem {
         return cont;
     }
 
+    /** ToString dos Vagões
+     * @return
+     */
     public String toStringVagoesHTML(){
         if (getListaVagao().isEmpty()){
             return "<vazia>";
@@ -130,6 +164,9 @@ public class Trem {
         }
     }
 
+    /** ToString das Locomotivas
+     * @return
+     */
     public String toStringLocomotivasHTML(){
         if (getListaLocomotivas().isEmpty()){
             return "<vazia>";
@@ -147,8 +184,11 @@ public class Trem {
         }
     }
 
+    /** ToString dos Trens
+     * @return
+     */
     public String toStringHTML() {
-        return "Trem T" + id + " Locomotivas: " + toStringLocomotivasHTML() + " Vagoõs: " + toStringVagoesHTML();
+        return "Trem T" + id + " Locomotivas: " + toStringLocomotivasHTML() + " Vagões: " + toStringVagoesHTML();
     }
     
     @Override
