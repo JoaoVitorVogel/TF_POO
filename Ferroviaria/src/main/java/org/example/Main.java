@@ -20,9 +20,9 @@ public class Main {
     static Garagem garagem = new Garagem();
 
     public static void criaEmpresa() { // Método para criar as locomotivas e vagões
-        String criaVagaoFile = "Ferroviaria\\arquivos\\inicialVagao.csv";
-        String criaLocomotivaFile = "Ferroviaria\\arquivos\\inicialLocomotiva.csv";
-        String criaComposicaoFile = "Ferroviaria\\arquivos\\inicialComposicao.csv";
+        String criaVagaoFile = "Ferroviaria/arquivos/inicialVagao.csv";
+        String criaLocomotivaFile = "Ferroviaria/arquivos/inicialLocomotiva.csv";
+        String criaComposicaoFile = "Ferroviaria/arquivos/inicialComposicao.csv";
 
         try {
             FileReader fileReader = new FileReader(criaVagaoFile);

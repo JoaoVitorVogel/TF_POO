@@ -44,6 +44,8 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Consolas", 3, 48));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(
+                new javax.swing.ImageIcon(getClass().getResource("/org/example/Imagens/trainIcon.png")));
         jLabel1.setText("Garagens");
         jLabel1.setMaximumSize(new java.awt.Dimension(150, 48));
 
