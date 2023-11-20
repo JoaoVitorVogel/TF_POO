@@ -116,7 +116,7 @@ public class Garagem {
      * ID,
      * se nao encontrar lanca uma Exception
      */
-    public Locomotiva getLocomotiva(int id) throws InvalidParameterException {
+    public static Locomotiva getLocomotiva(int id) throws InvalidParameterException {
         for (Locomotiva l : garagemLocomotivas) {
             if (l.getId() == id)
                 return l;
@@ -128,7 +128,7 @@ public class Garagem {
      * Percorre a lista de vagoes e retorna o objeto 'Vagao' com o mesmo ID,
      * se nao encontrar lanca uma Exception
      */
-    public Vagao getVagao(int id) throws InvalidParameterException {
+    public static Vagao getVagao(int id) throws InvalidParameterException {
         for (Vagao v : garagemVagoes) {
             if (v.getId() == id)
                 return v;
@@ -357,11 +357,11 @@ public class Garagem {
         return garagemLocomotivas;
     }
 
-    public List<Vagao> getGaragemVagoes() {
+    public static List<Vagao> getGaragemVagoes() {
         return garagemVagoes;
     }
 
-    public List<Trem> getGaragemTrens() {
+    public static List<Trem> getGaragemTrens() {
         return garagemTrens;
     }
 

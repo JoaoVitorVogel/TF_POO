@@ -1,6 +1,7 @@
 package org.example.InterfaceGrafica;
 
 import org.example.Garagem;
+import org.example.IniciaGaragens;
 import org.example.Main;
 
 /**
@@ -190,7 +191,7 @@ public class Menu extends javax.swing.JFrame {
 
     // ação salvar
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {
-        Main.atualizaArquivos();
+        IniciaGaragens.atualizaArquivos();
     }
 
     // ação desmontar trem
