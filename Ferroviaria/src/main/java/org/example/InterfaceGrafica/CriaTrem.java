@@ -38,7 +38,7 @@ public class CriaTrem extends javax.swing.JFrame {
         jSlider1.setFont(new java.awt.Font("Segoe UI", 0, 8));
         jSlider1.setMajorTickSpacing(1);
         jSlider1.setMaximum(Garagem.getQuantiaLocomotivas());
-        jSlider1.setMinimum(1);
+        jSlider1.setMinimum(0);
         jSlider1.setMinorTickSpacing(1);
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
