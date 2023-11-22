@@ -1,5 +1,8 @@
 package org.example.InterfaceGrafica;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import org.example.Garagem;
 
 /**
@@ -37,7 +40,6 @@ public class EditarTrem extends javax.swing.JFrame {
         sliderLocomotiva.setPaintLabels(true);
         sliderLocomotiva.setPaintTicks(true);
         sliderLocomotiva.setToolTipText("FEWG");
-        //sliderLocomotiva.setEnabled(false);
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +68,18 @@ public class EditarTrem extends javax.swing.JFrame {
         sliderVagao.setRequestFocusEnabled(false);
         sliderVagao.setVerifyInputWhenFocusTarget(false);
 
+        sliderVagao.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                setaVisibilidadeLocomotiva();
+            }
+         });
+
+        sliderLocomotiva.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                setaVisibilidadeVagao();
+            }
+         });
+
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +95,7 @@ public class EditarTrem extends javax.swing.JFrame {
         });
 
         atualizaSliders();
+        setaVisibilidadeLocomotiva();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,7 +157,23 @@ public class EditarTrem extends javax.swing.JFrame {
         pack();
     }
 
+    private void setaVisibilidadeLocomotiva(){
+        if(sliderVagao.getValue() != 0){
+            sliderLocomotiva.setEnabled(false);
+        } else {
+            sliderLocomotiva.setEnabled(true);
+        }
+    }
+
+    private void setaVisibilidadeVagao(){
+        if(sliderLocomotiva.getValue() != valorIniciaLocomotiva){
+            sliderVagao.setEnabled(false);
+        } else {
+            sliderVagao.setEnabled(true);
+        }
+    }
     //atualiza sliders
+    int valorIniciaLocomotiva;
     private void atualizaSliders(){
         int idTrem = Integer.parseInt((String) IDTrem.getSelectedItem());
 
@@ -153,6 +184,7 @@ public class EditarTrem extends javax.swing.JFrame {
 
         sliderVagao.setValue(Garagem.contaVagaoById(idTrem));
         sliderLocomotiva.setValue(Garagem.contaLocomotivaById(idTrem));
+        valorIniciaLocomotiva = sliderLocomotiva.getValue();
     }
     
     //ação selecionar id
