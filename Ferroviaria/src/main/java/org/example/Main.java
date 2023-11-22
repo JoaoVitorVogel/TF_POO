@@ -1,5 +1,4 @@
 package org.example;
-
 import org.example.InterfaceGrafica.Menu;
 
 public class Main {
