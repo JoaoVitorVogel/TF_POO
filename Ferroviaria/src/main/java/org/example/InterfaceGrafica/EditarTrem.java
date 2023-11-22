@@ -34,8 +34,8 @@ public class EditarTrem extends javax.swing.JFrame {
         sliderLocomotiva.setBackground(new java.awt.Color(255, 255, 255));
         sliderLocomotiva.setFont(new java.awt.Font("Segoe UI", 0, 8)); 
         sliderLocomotiva.setMajorTickSpacing(1);
-        sliderLocomotiva.setMaximum(1);
-        sliderLocomotiva.setMinimum(1);
+        sliderLocomotiva.setMaximum(0);
+        sliderLocomotiva.setMinimum(0);
         sliderLocomotiva.setMinorTickSpacing(1);
         sliderLocomotiva.setPaintLabels(true);
         sliderLocomotiva.setPaintTicks(true);
