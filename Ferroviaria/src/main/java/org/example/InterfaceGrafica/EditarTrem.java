@@ -96,6 +96,7 @@ public class EditarTrem extends javax.swing.JFrame {
 
         atualizaSliders();
         setaVisibilidadeLocomotiva();
+        setaVisibilidadeVagao();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
