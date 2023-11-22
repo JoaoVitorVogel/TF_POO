@@ -1,5 +1,7 @@
 package org.example.InterfaceGrafica;
 
+import javax.swing.JSeparator;
+
 import org.example.Garagem;
 import org.example.IniciaGaragens;
 
@@ -31,6 +33,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
@@ -42,12 +45,13 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel7.setText(Garagem.toStringVagoesHTML());
 
-        jLabel1.setFont(new java.awt.Font("Consolas", 3, 48));
+        jLabel1.setFont(new java.awt.Font("Consolas", 5, 35));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/org/example/Imagens/trainIcon.png")));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 5, 28));
+        jLabel1.setIcon(
+                new javax.swing.ImageIcon(getClass().getResource("/org/example/Imagens/garageIcon.png")));
         jLabel1.setText("Garagens");
-        jLabel1.setMaximumSize(new java.awt.Dimension(150, 48));
+        jLabel1.setMaximumSize(new java.awt.Dimension(150, 100));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jLabel2.setIcon(
@@ -65,6 +69,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("Locomotivas");
 
         jMenu1.setText("Arquivo");
+
 
         botaoSalvar.setText("Salvar");
         botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +123,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)             
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
