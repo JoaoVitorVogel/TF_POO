@@ -5,6 +5,8 @@ public class Main {
 
     public static void main(String[] ARGS) {
         IniciaGaragens.criaEmpresa();
-        new Menu().setVisible(true);
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        telaMenu.setLocationRelativeTo(null);
     }
 }

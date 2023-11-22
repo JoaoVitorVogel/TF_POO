@@ -1,7 +1,5 @@
 package org.example.InterfaceGrafica;
 
-import javax.swing.JSeparator;
-
 import org.example.Garagem;
 import org.example.IniciaGaragens;
 
@@ -180,12 +178,16 @@ public class Menu extends javax.swing.JFrame {
 
     // ação criar trem
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
-        new CriaTrem().setVisible(true);
+        CriaTrem telaTrem = new CriaTrem();
+        telaTrem.setVisible(true);
+        telaTrem.setLocationRelativeTo(null);
     }
 
     // ação editar trem
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
-        new EditarTrem().setVisible(true);
+        EditarTrem telaEditTrem = new EditarTrem();
+        telaEditTrem.setVisible(true);
+        telaEditTrem.setLocationRelativeTo(null);
     }
 
     // ação fechar
@@ -200,7 +202,9 @@ public class Menu extends javax.swing.JFrame {
 
     // ação desmontar trem
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
-        new DesmontaTrem().setVisible(true);
+        DesmontaTrem telaDesmontaTrem = new DesmontaTrem();
+        telaDesmontaTrem.setVisible(true);
+        telaDesmontaTrem.setLocationRelativeTo(null);
     }
 
     //Atualiza tela garagens
